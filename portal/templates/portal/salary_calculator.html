@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!--<body style="background: rgb(223, 255, 232);"></body>-->
+
+<div class="container">
+    <h1 class="text-center mt-4 mb-5 text-success">Salary Calculator</h1>
+    <!--<p class="fs-3 badge bg-secondary text-wrap">test</p>-->
+</div>
+
+<div class="container">
+    <div class="row">
+    <div class="col-6">
+    
+  
+    <form action="/salary_calculator" method="POST">
+        {% csrf_token %}
+        <pre class="text-center"><span class="fs-7 text-dark fw-bold"> Enter gross monthly salary</span></pre>
+        <div class="d-flex justify-content-center">
+        <input type="text" class="form-control w-50 mb-4" name="salary" placeholder="Salary">
+        </div>
+        <pre class="text-center"><span class="fs-7 text-dark fw-bold"> Enter yearly tax credit</span></pre>
+        <div class="d-flex justify-content-center">
+        <input type="text" class="form-control w-50" name="tax_credit" placeholder="Default: 3750">
+        </div>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-success btn mt-4">Submit</button>
+        </div>
+    </form>
+
+    </div>
+
+
+    <div class="col-6">
+        <pre>
+        <span class="fs-5 text-dark fw-bold">Gross Salary: </span> <span class="fs-5 text-dark fw-bold"> € {{gross_salary}}</span>
+
+        <span class="fs-7 text-dark fw-bold">Gross PAYA: </span> <span class="fs-6 text-dark">€ {{gross_paya}}</span>
+        
+        <span class="fs-7 text-dark fw-bold">Monthly Tax Credit: </span> <span class="fs-6 text-dark">€ {{tax_credit}}</span>
+        
+        <span class="fs-7 text-dark fw-bold">PAYA: </span> <span class="fs-6 text-dark">€ {{paya}}</span>
+        
+        <span class="fs-7 text-dark fw-bold">USC: </span> <span class="fs-6 text-dark">€ {{usc}}</span>
+
+        <span class="fs-7 text-dark fw-bold">Employee PRSI: </span> <span class="fs-6 text-dark">€ {{employee_prsi}}</span>
+
+        <span class="fs-7 text-dark fw-bold">Employers PRSI: </span> <span class="fs-6 text-dark">€ {{employer_prsi}}</span>
+        
+        <span class="fs-5 text-dark fw-bold">Net Salary: </span> <span class="fs-5 text-dark fw-bold">€ {{net_salary}}</span>
+        </pre>
+    </div>
+
+    </div>
+
+</div>
+{% endblock content %}
+
+

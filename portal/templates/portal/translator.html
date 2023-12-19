@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+{% block content %}
+
+<!--<body style="background: rgb(255, 234, 234);"></body>-->
+
+<div class="container">
+    <h1 class="text-center mt-4 mb-4 text-danger">Translator</h1>
+    <!--<p class="fs-3 badge bg-secondary text-wrap">test</p>-->
+</div>
+
+<div class="container">
+
+    <form action="/translator" method="POST">
+        {% csrf_token %}
+        <!--<input type="text" class="form-control" name="user_input">-->
+        <div class="d-flex justify-content-center">
+        <textarea class="form-control w-75" placeholder="Enter or paste text here in any language" type="text" id="exampleFormControlTextarea1" name="user_input" rows="5"></textarea>
+        </div>
+        <p class="fw-5 mt-4 text-center text-muted"> Enter Output language (default English)</p>
+        <div class="d-flex justify-content-center">
+        <input type="text" class="form-control w-25" name="language" placeholder="Enter language (default English)" value="English">
+        </div>
+        <div class="d-flex justify-content-center">
+        <button type="submit" class="btn btn-danger btn mt-4">Submit</button>
+        </div>
+    </form>
+ 
+
+
+
+ 
+{% if question %}
+<p class="mt-3"><b> Orginal Text:</b> <div></div>{{question}}</p>
+
+{% endif %}
+
+<hr>
+
+<div class="mt-4">
+{% if response %}
+<p><b>Translated Text </b> <div></div>{{ response }} </p>
+
+
+{% endif %}
+
+</div>
+
+
+{% endblock content %}
+</body>
+</html>
+
