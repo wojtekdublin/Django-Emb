@@ -1,7 +1,11 @@
 from django.shortcuts import render
+from .models import Blog
 
 import openai, os
+from openai import OpenAI
 from dotenv import load_dotenv
+
+
 load_dotenv()
 api_key = os.getenv('OPENAI_KEY', None)
 
@@ -96,12 +100,10 @@ def translator(request):
         prompt = f'Translate text provided to {user_input2}: {user_input}'
         #prompt = f"If the question is related to weather answer it: {user_input}, else say. Can't answer this"
 
-        response = openai.completions.create(
-            model = 'text-davinci-003',
-            prompt = prompt,
-            max_tokens=256,
-            #stop='.',
-            temperature=1
+
+        response = openai.completions.create (
+            model= 'gpt-3.5-turbo-instruct',
+            prompt= prompt,
         )
 
         #print(response)
@@ -116,3 +118,13 @@ def translator(request):
 
 
     return render(request, 'portal/translator.html', context)
+
+
+def blog(request):
+
+    posts = Blog.objects.all()
+    return render(request, 'portal/blog.html', {'posts': posts})
+
+def post(request, pk):
+    post = Blog.objects.get(id=pk)
+    return render(request, 'portal/post.html', {'post': post})

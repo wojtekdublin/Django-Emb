@@ -9,9 +9,9 @@
 
   <body">
     
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand fs-4" href="#">
+          <a class="navbar-brand fs-4 text-white" href="#">
             <!--<img src="" width="30" height="30" class="d-inline-block align-top" alt="">-->
             Logo</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,13 +21,16 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
               <li class="nav-item pe-5">
-                <a class="nav-link active text-primary fs-4" aria-current="page" href="/">Home</a>
+                <a class="nav-link active text-white fs-4" aria-current="page" href="/">Home</a>
               </li>
               <li class="nav-item pe-5">
-                <a class="nav-link active text-success fs-4" aria-current="page" href="/salary_calculator">Salary Calculator</a>
+                <a class="nav-link text-white fs-4" aria-current="page" href="{% url "blog" %}">News</a>
+              </li>
+              <li class="nav-item pe-5">
+                <a class="nav-link active text-white fs-4" aria-current="page" href="/salary_calculator">Salary Calculator</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active text-danger fs-4" aria-current="page" href="/translator">Translator</a>
+                <a class="nav-link active text-white fs-4" aria-current="page" href="/translator">Translator</a>
               </li>
             </ul>
             <form class="d-flex" role="search">
